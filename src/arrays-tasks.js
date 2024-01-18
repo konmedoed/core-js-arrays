@@ -37,8 +37,17 @@ function getIntervalArray(/* start, end */) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  let arr3 = [];
+  if (arr1.length > arr2.length)
+    arr3 = arr1.map((item, index) => {
+      return item + (index > arr2.length - 1 ? 0 : arr2[index]);
+    });
+  else
+    arr3 = arr2.map((item, index) => {
+      return item + (index > arr1.length - 1 ? 0 : arr1[index]);
+    });
+  return arr3;
 }
 
 /**
@@ -53,8 +62,9 @@ function sumArrays(/* arr1, arr2 */) {
  *    findElement(['Array', 'Number', 'string'], 'Date') => -1
  *    findElement([0, 1, 2, 3, 4, 5], 5) => 5
  */
-function findElement(/* arr, value */) {
-  throw new Error('Not implemented');
+function findElement(arr, value) {
+  const index = arr.indexOf(value);
+  return index;
 }
 
 /**
@@ -71,8 +81,9 @@ function findElement(/* arr, value */) {
  *    findAllOccurrences([ null, undefined, null ], null) => 2
  *    findAllOccurrences([ true, 0, 1, 'true' ], true) => 1
  */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurrences(arr, item) {
+  const value = arr.filter((item1) => item1 === item);
+  return value.length;
 }
 
 /**
@@ -87,8 +98,9 @@ function findAllOccurrences(/* arr, item */) {
  *    removeFalsyValues([ 1, 2, 3, 4, 5, 'false' ]) => [ 1, 2, 3, 4, 5, 'false' ]
  *    removeFalsyValues([ false, 0, NaN, '', undefined ]) => [ ]
  */
-function removeFalsyValues(/* arr */) {
-  throw new Error('Not implemented');
+function removeFalsyValues(arr) {
+  const brr = arr.filter((item) => item);
+  return brr;
 }
 
 /**
@@ -101,8 +113,9 @@ function removeFalsyValues(/* arr */) {
  *    getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]) => [ 0, 1, 2, 3, 4 ]
  *    getStringsLength([ 'angular', 'react', 'ember' ]) => [ 7, 5, 5 ]
  */
-function getStringsLength(/* arr */) {
-  throw new Error('Not implemented');
+function getStringsLength(arr) {
+  const brr = arr.map((item) => item.length);
+  return brr;
 }
 
 /**
@@ -119,8 +132,12 @@ function getStringsLength(/* arr */) {
  *   getAverage([ 1, 10, 100, 1000 ])  => 277,75
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
-function getAverage(/* arr */) {
-  throw new Error('Not implemented');
+function getAverage(arr) {
+  const value = arr.reduce((sum, val) => sum + val, 0);
+  if (value === 0) return value;
+  if (value / arr.length === Math.trunc(value / arr.length))
+    return value / arr.length;
+  return Number((value / arr.length).toFixed(2));
 }
 
 /**
